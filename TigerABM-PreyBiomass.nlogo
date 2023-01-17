@@ -396,9 +396,6 @@ to setup
     set cub-indep-list []
   ]
 
-  ; Export the view at the beginning of simulation
-;  export-view (word "C:/Users/snurf/Desktop/export/V " prey-biomass "_" num-of-fem " tick0.png")
-
   reset-ticks
 end ; setup
 
@@ -3093,7 +3090,7 @@ num-of-fem
 num-of-fem
 1
 4
-2.0
+4.0
 1
 1
 NIL
@@ -3107,7 +3104,7 @@ CHOOSER
 prey-biomass
 prey-biomass
 "homogenous" "random" "sm_random" "lr_gradient"
-3
+2
 
 SWITCH
 295
@@ -3538,10 +3535,29 @@ NetLogo 6.2.2
       <value value="4"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="results" repetitions="1" runMetricsEveryStep="true">
-    <setup>setup</setup>
+  <experiment name="results_monthly" repetitions="1" runMetricsEveryStep="true">
+    <setup>setup
+export-view (word "C:/Users/snurf/Desktop/export/monthly/V " prey-biomass "_" num-of-fem " tick0.png")</setup>
     <go>go
 export-view (word "C:/Users/snurf/Desktop/export/V " prey-biomass "_" num-of-fem " tick" ticks ".png")</go>
+    <timeLimit steps="12"/>
+    <enumeratedValueSet variable="prey-biomass">
+      <value value="&quot;homogenous&quot;"/>
+      <value value="&quot;random&quot;"/>
+      <value value="&quot;sm_random&quot;"/>
+      <value value="&quot;lr_gradient&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-of-fem">
+      <value value="1"/>
+      <value value="2"/>
+      <value value="3"/>
+      <value value="4"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="results_overall" repetitions="1" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <final>export-view (word "C:/Users/snurf/Desktop/export/overall/V " prey-biomass "_" num-of-fem " tick" ticks ".png")</final>
     <timeLimit steps="12"/>
     <enumeratedValueSet variable="prey-biomass">
       <value value="&quot;homogenous&quot;"/>
